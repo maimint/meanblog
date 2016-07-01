@@ -1,0 +1,126 @@
+<!-- Main View Angular -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mean Blog</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.js"></script>
+</head>
+
+<body class="container" ng-app="myApp" style="color: #000000">
+    <div class="container" style="border:solid 1px #f4f4f4; box-shadow: 0px 0px 5px #428bca; border-top: solid 10px #388e0c ">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-md-4">
+              <img src="/images/logo.png" style="width:300px;">
+            </div>
+            <div class="col-md-8">
+            Ad
+            </div>
+          </div>
+        </div>
+
+         <div class="row">
+          <div class="col-md-12" style="background-image:url('/images/Blog-Banner.jpg'); background-position: center right;  min-height:300px; ">
+          
+          </div>
+        </div>
+
+      <div class="row">
+          <div class="col-md-12">
+            <div class="col-md-8">
+              <ul ng-view> 
+
+
+
+              </ul>
+              
+            </div>
+            <div class="col-md-4">
+            <div class="row">
+            <div class="col-md-12">
+              <div class="bs-callout bs-callout-info" id="callout-navbar-breakpoint"> 
+              <h4>Tech Info</h4> 
+              <p class="highlight">This Simple blog using Angular, Node , Mysql, Bootstrap</p> 
+              </div>
+              </div>
+
+              <div class="col-md-12 tags">
+                <span class="label label-default">Angular</span>
+                <span class="label label-primary">Node</span>
+                <span class="label label-success">Mysql</span>
+                <span class="label label-info">Bootstrap</span>
+                <span class="label label-warning">Bluebird</span>
+                <span class="label label-danger">Grunt</span>
+                <span class="label label-info">Promises</span>
+                <span class="label label-warning">ES6</span>
+                <span class="label label-danger">React</span>
+              </div>
+              </div>
+            </div>
+          </div>
+      </div>
+   
+
+<footer>
+
+<script src="/js/controllers.js"></script>
+<script src="/js/app.js"></script>
+<style type="text/css">
+  .bs-callout {
+    margin: 20px 0;
+    padding: 15px 30px 15px 15px;
+    border-left: 5px solid #eee;
+}
+
+.bs-callout h4 {
+    margin-top: 0;
+}
+
+.bs-callout p:last-child {
+    margin-bottom: 0;
+}
+
+.bs-callout code,
+.bs-callout .highlight {
+    background-color: #f1f7f6;
+}
+
+.bs-callout-info {
+    background-color: #f0f7fd;
+    border-color: #54753f;
+}
+
+
+
+.bs-callout-info h4,
+.bs-callout-info a.alert-link {
+    color: #1b809e;
+}
+
+.bs-callout a.alert-link {
+    font-weight: bold;
+}
+
+.tags span{
+  font-size: 13px;
+  display: inline-block;
+  padding: 5px;
+  margin-top: 10px;
+  transition:  2s all;
+}
+
+.tags span:hover{
+  transform: scale(2);
+}
+</style>
+
+
+<p class="text-center text-muted">© Copyright 2014 Mean Blog</p>
+</footer>
+  </div> <!-- /container -->   
+</body>
+</html>
