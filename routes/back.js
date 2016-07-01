@@ -132,4 +132,31 @@ router.post('/deletePost', function(req, res)
 });
 
 
+router.get('/readPost/:id', function(req, res)
+{
+	var id = req.params.id;
+
+	if(! id || id <= 0 )
+		return res.json({msg: 'Invalid Post ID', error: 1})
+
+	db.getConnection(function(err,connection)
+	{
+	 	if(err)
+	 		return res.json({msg: err, error: 1});
+	 	
+	   	db.query('SELECT post_title, post_desc FROM posts WHERE id_post = ?', id, function(err,results)
+		{
+			if(err)
+				return res.json({msg: err, error: 1});
+
+			return res.json({msg: 'success', error: 0, post:results});
+
+			connection.release();
+		});
+
+	});
+
+});
+
+
 module.exports = router;

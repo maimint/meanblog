@@ -6,6 +6,14 @@ function IndexCtrl($scope, $http)
     });
 }
 
+function ReadPostCtrl($scope, $http, $routeParams)
+{
+	$http.get('/back/readPost/' + $routeParams.id).
+    success(function(data) {
+    	$scope.post = data.post;
+    });
+}
+
 
 
 
