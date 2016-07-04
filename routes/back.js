@@ -9,7 +9,6 @@ const promise 		= 	require('bluebird');
 const conf 			= 	require('../conf/config'); // General config
 const db 			= 	require('../conf/db'); //mysql db conn
 
-
 //Default route request
 router.get('/', function(req, res){
 
