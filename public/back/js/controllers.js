@@ -1,4 +1,6 @@
 //All Controllers in backoffice
+//var app =angular.module('myApp');
+
 function AuthCtrl($scope, $http, $location, $localStorage)
 {
   $scope.name 		  = 'Login Auth';
@@ -168,15 +170,7 @@ function ManageBlogsCtrl($scope, $http, $location)
     };
 }
 
-//Main Ctrl
-function MainCtrl($location, $localStorage)
-{
-  $scope.logout   = function()
-  {
-    delete $localStorage.token;
-    $location.path('/');
-  };
-}
+
 
     
 

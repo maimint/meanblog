@@ -1,5 +1,6 @@
-var app = angular.module('myApp', ['ngRoute', 'ngStorage']).
-  config(function($routeProvider, $httpProvider, $locationProvider) {
+var app = angular.module('myApp', ['ngRoute', 'ngStorage']);
+
+app.config(function($routeProvider, $httpProvider, $locationProvider) {
     $routeProvider.
       when('/', {
         templateUrl: '../back/partials/Login.html',
@@ -53,5 +54,15 @@ var app = angular.module('myApp', ['ngRoute', 'ngStorage']).
        //$locationProvider.html5Mode(true);
 
 });
+
+
+app.controller('MainCtrl', function($scope, $location, $localStorage){
+  
+  $scope.logout   = function(){
+    delete $localStorage.token;
+    $location.path('/');
+  };
+
+})
 
 
