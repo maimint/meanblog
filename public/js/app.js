@@ -3,7 +3,7 @@ var app = angular.module('myApp', ['ngRoute']).
     $routeProvider.
       when('/', {
         templateUrl: '../partials/blogList.html',
-        //controller: IndexCtrl
+        controller: IndexCtrl
       }).
       when('/readPost/:id', {
         templateUrl: 'partials/detailPost.html',
