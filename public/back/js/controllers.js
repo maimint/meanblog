@@ -1,9 +1,10 @@
+//All Controllers in backoffice
 function AuthCtrl($scope, $http, $location, $localStorage)
 {
   $scope.name 		  = 'Login Auth';
   $scope.error    	= $localStorage.token;
 
-  $scope.authform	=	function()
+  $scope.authForm	=	function()
   {
 		  var username 	=	$scope.username;
   		var	password	=	$scope.password;
@@ -54,11 +55,11 @@ function AuthCtrl($scope, $http, $location, $localStorage)
   };
 }
 
-function CrudBlogs($scope, $http, $location)
+function addPostCtrl($scope, $http, $location)
 {
 	   $scope.class  = '';
      
-  	// Submit Video Form
+  	// Submit Post Form
     $scope.addPost = function()
     {
 
@@ -109,8 +110,10 @@ function CrudBlogs($scope, $http, $location)
   };
 }
 
-function ManageBlogs($scope, $http, $location)
+function ManageBlogsCtrl($scope, $http, $location)
 {
+    
+  // Get All Posts
     $http({
             method  : 'post',
             url     : '/back/managePost',
@@ -132,8 +135,8 @@ function ManageBlogs($scope, $http, $location)
         }
       });
 
-      //Delete videos
-
+      
+    //Delete Post
     $scope.deletePost  = function(id)
     {
       
@@ -165,6 +168,7 @@ function ManageBlogs($scope, $http, $location)
     };
 }
 
+//Main Ctrl
 function MainCtrl($location, $localStorage)
 {
   $scope.logout   = function()

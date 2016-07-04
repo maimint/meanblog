@@ -4,6 +4,11 @@ function IndexCtrl($scope, $http)
     success(function(data, status, headers, config) {
       $scope.posts = data.posts;
     });
+
+    $scope.stripDesc = function(desc) 
+    {
+  		return desc.substring(0,300);
+	}
 }
 
 function ReadPostCtrl($scope, $http, $routeParams)

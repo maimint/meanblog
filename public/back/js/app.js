@@ -11,14 +11,15 @@ var app = angular.module('myApp', ['ngRoute', 'ngStorage']).
       }).
       when('/addpost', {
         templateUrl: '../back/partials/addPost.html',
-        controller: CrudBlogs
+        controller: addPostCtrl
       }).
       when('/manageposts', {
         templateUrl: '../back/partials/managePost.html',
-        controller: ManageBlogs
+        controller: ManageBlogsCtrl
       });
 
 
+      //Before router middleware
       $httpProvider.interceptors.push(['$q', '$location', '$localStorage', '$rootScope', function($q, $location, $localStorage, $rootScope) {
 
         return {
@@ -29,7 +30,6 @@ var app = angular.module('myApp', ['ngRoute', 'ngStorage']).
                     $rootScope.islogged = 1;
                     if($location.path() == '/')
                       $location.path('/dashboard');
-                    
                 }
                 else
                 {
@@ -52,8 +52,6 @@ var app = angular.module('myApp', ['ngRoute', 'ngStorage']).
      
        //$locationProvider.html5Mode(true);
 
-
-
-  });
+});
 
 

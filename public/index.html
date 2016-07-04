@@ -11,26 +11,36 @@
 </head>
 
 <body class="container" ng-app="myApp" style="color: #000000">
-    <div class="container" style="border:solid 1px #f4f4f4; box-shadow: 0px 0px 5px #428bca; border-top: solid 10px #388e0c ">
+    <div class="container" style="border:solid 1px #f4f4f4; box-shadow: 0px 0px 5px #428bca; border-top: solid 5px #388e0c">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-12" style="padding:0px">
             <div class="col-md-4">
-              <img src="/images/logo.png" style="width:300px;">
+             <a href="#/"> </span><img src="/images/logo.png" style="width:300px;"></a>
             </div>
-            <div class="col-md-8">
-            Ad
+            <div class="col-md-8 ad" style="min-height: 120px;background-color:#e5e8ea;border: solid 2px #e8e0e0;">
+            <h3 class="text-center" style="margin-top: 40px;color: #686a6b">Adsence 600 * 100 Ad here</h3>
             </div>
           </div>
         </div>
 
          <div class="row">
-          <div class="col-md-12" style="background-image:url('/images/Blog-Banner.jpg'); background-position: center right;  min-height:300px; ">
-          
+          <div class="col-md-12" style="background-image:url('/images/Blog-Banner.jpg'); background-position: center right;  min-height:300px;">
+          <div class="baloon" style="background-color:#268026">
+          <p style="margin-top:30%">M</p>
+          </div>
+          <div class="baloon" style="background-color:#252527">
+          <p style="margin-top:30%">E</p>
+          </div>
+          <div class="baloon" style="background-color:#bb7217">
+          <p style="margin-top:30%">A</p>
+          </div>
+          <div class="baloon" style="background-color:#840f55">
+          <p style="margin-top:30%">N</p>
           </div>
         </div>
-
+</div>
       <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-12"  style="padding:0px">
             <div class="col-md-8">
               <ul ng-view> 
 
@@ -42,11 +52,11 @@
             <div class="col-md-4">
             <div class="row">
             <div class="col-md-12">
-              <div class="bs-callout bs-callout-info" id="callout-navbar-breakpoint"> 
+              <div class="bs-callout bs-callout-info highlights " id="callout-navbar-breakpoint"> 
               <h4>Tech Info</h4> 
               <p class="highlight">This Simple blog using Angular, Node , Mysql, Bootstrap</p> 
               </div>
-              </div>
+            </div>
 
               <div class="col-md-12 tags">
                 <span class="label label-default">Angular</span>
@@ -58,6 +68,10 @@
                 <span class="label label-info">Promises</span>
                 <span class="label label-warning">ES6</span>
                 <span class="label label-danger">React</span>
+                <span class="label label-default">$digest</span>
+                <span class="label label-primary">$watch</span>
+                <span class="label label-success">$rootscope</span>
+                <span class="label label-info">$factory</span>
               </div>
               </div>
             </div>
@@ -65,11 +79,92 @@
       </div>
    
 
-<footer>
+
 
 <script src="/js/controllers.js"></script>
 <script src="/js/app.js"></script>
 <style type="text/css">
+.tags span{
+  font-size: 13px;
+  display: inline-block;
+  padding: 5px;
+  margin-top: 10px;
+  transition:  2s all;
+}
+
+.tags span:hover{
+  transform: scale(2);
+}
+ul li a{
+  transition: 1s all;
+}
+
+ul li a:hover{
+  color: #333232;
+  text-shadow: 2px 2px 4px #777;
+  cursor: pointer;
+  text-decoration: none;
+
+
+}
+
+.ad
+{
+  min-height: 120px;
+  background-color:#e5e8ea;
+  border: solid 2px #e8e0e0;
+  transition: 1s all;
+}
+
+.ad:hover{
+
+  box-shadow: inset 0 0 0 10px #53a7ea;
+
+}
+
+.baloon{
+  position: relative;
+  float: left;
+  width: 50px;
+  height: 50px;
+  background-color: #CCCCCC;
+  margin-top: 120px;
+  margin-left: 10px;
+  border-radius: 50px;
+  text-align: center;
+  color: #FFFFFF;
+  border:solid 2px #eae4e4;
+  animation: bounceIn 2s infinite;
+
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.4);
+    
+  }
+  30%{
+    transform: rotate(180deg);
+  }
+  
+  100% {
+    transform: scale(1);
+  }
+}
+
+.highlights{
+   animation: highlight 2s infinite;
+}
+
+@keyframes highlight {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+   opacity: 1;
+    
+  }
+}
   .bs-callout {
     margin: 20px 0;
     padding: 15px 30px 15px 15px;
@@ -80,11 +175,7 @@
     margin-top: 0;
 }
 
-.bs-callout p:last-child {
-    margin-bottom: 0;
-}
 
-.bs-callout code,
 .bs-callout .highlight {
     background-color: #f1f7f6;
 }
@@ -105,22 +196,14 @@
     font-weight: bold;
 }
 
-.tags span{
-  font-size: 13px;
-  display: inline-block;
-  padding: 5px;
-  margin-top: 10px;
-  transition:  2s all;
-}
-
-.tags span:hover{
-  transform: scale(2);
-}
 </style>
 
+<div class="row" style="min-height:80px; background-color:#388e0c; color:#FFFFFF">
+<div class="col-md-12" style="margin-top:40px">
+<p class="text-center">© Copyright 2014 Mean Blog</p>
+</div>
+</div>
 
-<p class="text-center text-muted">© Copyright 2014 Mean Blog</p>
-</footer>
   </div> <!-- /container -->   
 </body>
 </html>

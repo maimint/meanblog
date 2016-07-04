@@ -6,17 +6,20 @@ const bodyParser 	= 	require('body-parser');
 const path  		= 	require('path');
 const jwt           = 	require("jsonwebtoken");
 const promise 		= 	require('bluebird');
-const conf 			= 	require('../conf/config');
+const conf 			= 	require('../conf/config'); // General config
 const db 			= 	require('../conf/db'); //mysql db conn
 
+
+//Default route request
 router.get('/', function(req, res){
 
   res.sendFile(path.join(__dirname, 'back/index.html'));
 });
 
+
+//Login Form Req
 router.post('/auth', function(req, res)
 {
-
 	if(! req.body )
 		return res.json({'text':'invalid Request', 'error': 1});
 
@@ -34,13 +37,14 @@ router.post('/auth', function(req, res)
 		res.json({
 			'text': 'Welcome User',
 			'error': 0,
-			'token': jwt.sign(conf.auth.pass, 'mean'),
+			'token': jwt.sign(conf.auth.pass, 'mean'),  // Generate Token
 			'is_logged': true
 		});
 	}
 });
 
 
+//Add Post Req
 router.post('/addPost', function(req, res)
 {
 
@@ -66,10 +70,13 @@ router.post('/addPost', function(req, res)
 	 	if(err)
 	 		return res.json({msg: err, error: 1});
 	 	
-	   	db.query('INSERT INTO posts SET ?', formData, function(err,ret)
+	 	db.query('INSERT INTO posts SET ?', formData, function(err,ret)
 		{
 			if(err)
+			{
+				connection.release(); // if connection object not undefined
 				return res.json({msg: err, error: 1});
+			}
 
 			connection.release();
 
@@ -81,6 +88,7 @@ router.post('/addPost', function(req, res)
 });
 
 
+//Manage Post Req
 router.post('/managePost', function(req, res)
 {
 
@@ -89,10 +97,14 @@ router.post('/managePost', function(req, res)
 	 	if(err)
 	 		return res.json({msg: err, error: 1});
 	 	
-	   	db.query('SELECT post_title, post_desc, id_post FROM posts', function(err,results)
+	 	
+	   	db.query('SELECT post_title, post_desc, id_post FROM posts ORDER By id_post DESC', function(err,results)
 		{
 			if(err)
+			{
+				connection.release();
 				return res.json({msg: err, error: 1});
+			}
 
 			connection.release();
 
@@ -103,7 +115,7 @@ router.post('/managePost', function(req, res)
 
 });
 
-
+//Delete Post Req
 router.post('/deletePost', function(req, res)
 {
 	if(! req.body )
@@ -117,10 +129,14 @@ router.post('/deletePost', function(req, res)
 	 	if(err)
 	 		return res.json({msg: err, error: 1});
 	 	
+	 	
 	   	db.query('DELETE FROM posts WHERE id_post = ?', req.body.post, function(err,results)
 		{
 			if(err)
+			{
+				connection.release();
 				return res.json({msg: err, error: 1});
+			}
 
 			return res.json({msg: 'success', error: 0});
 
@@ -132,6 +148,7 @@ router.post('/deletePost', function(req, res)
 });
 
 
+// Front End Read Post Req
 router.get('/readPost/:id', function(req, res)
 {
 	var id = req.params.id;
@@ -144,10 +161,13 @@ router.get('/readPost/:id', function(req, res)
 	 	if(err)
 	 		return res.json({msg: err, error: 1});
 	 	
-	   	db.query('SELECT post_title, post_desc FROM posts WHERE id_post = ?', id, function(err,results)
+	 	db.query('SELECT post_title, post_desc FROM posts WHERE id_post = ?', id, function(err,results)
 		{
 			if(err)
+			{
+				connection.release();
 				return res.json({msg: err, error: 1});
+			}
 
 			return res.json({msg: 'success', error: 0, post:results});
 

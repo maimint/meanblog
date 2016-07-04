@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 
+// Set orgin
 app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
@@ -26,12 +27,15 @@ app.use(function(req, res, next) {
     next();
 });
 
+
+//Set Public Path Dir
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+//Routes
 var back          = require('./routes/back');
 
-//routes
+//Routes mount
 app.use('/back', back);
 
 
@@ -68,6 +72,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
+//Port Config
 const server      = require('http').Server(app);
 const serverIp    = process.env.APP_IP || '0.0.0.0';
 const serverPort  = process.env.APP_PORT || 20310;
