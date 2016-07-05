@@ -38,9 +38,6 @@ var back          = require('./routes/back');
 //Routes mount
 app.use('/back', back);
 
-
-
-
 // error handlers
 
 // development error handler

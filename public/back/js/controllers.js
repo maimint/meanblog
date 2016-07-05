@@ -169,15 +169,3 @@ function ManageBlogsCtrl($scope, $http, $location)
         });
     };
 }
-
-
-
-    
-
- 
-
-
-    
-
-
-

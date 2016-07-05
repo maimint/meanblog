@@ -1,13 +1,13 @@
 'use strict';
 
-const express		= 	require('express');
-const router 		= 	express.Router();
-const bodyParser 	= 	require('body-parser');
-const path  		= 	require('path');
-const jwt           = 	require("jsonwebtoken");
-const promise 		= 	require('bluebird');
-const conf 			= 	require('../conf/config'); // General config
-const db 			= 	require('../conf/db'); //mysql db conn
+const express       =   require('express');
+const router        =   express.Router();
+const bodyParser    =   require('body-parser');
+const path          =   require('path');
+const jwt           =   require("jsonwebtoken");
+const promise       =   require('bluebird');
+const conf          =   require('../conf/config'); // General config
+const db            =   require('../conf/db'); //mysql db conn
 
 //Default route request
 router.get('/', function(req, res){
@@ -46,7 +46,6 @@ router.post('/auth', function(req, res)
 //Add Post Req
 router.post('/addPost', function(req, res)
 {
-
 	if(! req.body )
 		return res.json({'text':'invalid Request', 'error': 1});
 
@@ -57,19 +56,19 @@ router.post('/addPost', function(req, res)
 		return res.json({'text':'Please Enter Your Description', 'error': 1});
 
 
-	var formData	=	 {
-		post_title 			: 	req.body.title,
-		post_desc 			: 	req.body.desc,
-		date_registered		: 	Date.now()
+	var formData    =    {
+		post_title          :   req.body.title,
+		post_desc           :   req.body.desc,
+		date_registered     :   Date.now()
 
 	}
 
 	db.getConnection(function(err,connection)
 	{
-	 	if(err)
-	 		return res.json({msg: err, error: 1});
-	 	
-	 	db.query('INSERT INTO posts SET ?', formData, function(err,ret)
+		if(err)
+			return res.json({msg: err, error: 1});
+		
+		db.query('INSERT INTO posts SET ?', formData, function(err,ret)
 		{
 			if(err)
 			{
@@ -93,11 +92,11 @@ router.post('/managePost', function(req, res)
 
 	db.getConnection(function(err,connection)
 	{
-	 	if(err)
-	 		return res.json({msg: err, error: 1});
-	 	
-	 	
-	   	db.query('SELECT post_title, post_desc, id_post FROM posts ORDER By id_post DESC', function(err,results)
+		if(err)
+			return res.json({msg: err, error: 1});
+		
+		
+		db.query('SELECT post_title, post_desc, id_post FROM posts ORDER By id_post DESC', function(err,results)
 		{
 			if(err)
 			{
@@ -125,11 +124,11 @@ router.post('/deletePost', function(req, res)
 
 	db.getConnection(function(err,connection)
 	{
-	 	if(err)
-	 		return res.json({msg: err, error: 1});
-	 	
-	 	
-	   	db.query('DELETE FROM posts WHERE id_post = ?', req.body.post, function(err,results)
+		if(err)
+			return res.json({msg: err, error: 1});
+		
+		
+		db.query('DELETE FROM posts WHERE id_post = ?', req.body.post, function(err,results)
 		{
 			if(err)
 			{
@@ -157,10 +156,10 @@ router.get('/readPost/:id', function(req, res)
 
 	db.getConnection(function(err,connection)
 	{
-	 	if(err)
-	 		return res.json({msg: err, error: 1});
-	 	
-	 	db.query('SELECT post_title, post_desc FROM posts WHERE id_post = ?', id, function(err,results)
+		if(err)
+			return res.json({msg: err, error: 1});
+		
+		db.query('SELECT post_title, post_desc FROM posts WHERE id_post = ?', id, function(err,results)
 		{
 			if(err)
 			{
